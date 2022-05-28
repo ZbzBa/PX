@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的主页</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    #all{
+      background-image:url(img/beijing.jpg);
+      background-size: cover;
+	  }
+      header  h1{color:rgba(255, 0, 0, 0.5);font-size:48px;margin-left: 20px;height:60px;}
+     header #daohang{width:350px;height:50px;margin:0 auto;margin-bottom: 20px;}
+     header #daohang a{
+          color:pink;
+          font-size: 28px;
+          text-decoration:none;
+          margin: 15px;
+          }
+          header #daohang a:hover{color: yellow;}
+      #first{
+		  height:140px;
+          margin:0 auto;
+      }
+      #first p{color: aqua;font-family: "楷体";font-size: 24px;text-align:center;}
+      #first #shuai{font-size:72px;color:gold;}
+        #second{
+          height: 500px;
+          margin:0 auto; 
+          color:palevioletred;
+          font-size:22px;
+		  text-align:center;
+          }
+          #second p{margin-top:20px;;}
+          #second video{margin-top:20px;;}
+      footer{
+          height: 260px;
+          margin:0 auto;
+          text-align: center;
+           }
+		   footer p{
+			   color:#3cf;
+               font-size:24px;
+		  }
+	 aside{height:30px;color:pink;}
+	 aside a{color:pink;}
+	 aside a:hover{color:yellow;}
+		  
+</style>
+<body>
+    <div id="all">
+    <header>
+        <h1>My First Web</h1>
+     <nav id="daohang">
+     <a href="ME.html">ME</a>
+     <a href="动漫.html">动漫</a>
+     <a href="游戏.html">游戏</a>
+     <a href="生活.html">生活</a>
+     </nav>
+    </header>
+    <div id="first">
+    <p>
+        <strong>Hello ,</strong>我是张鹏北，屌丝一枚。欢迎来到我的主页。。。
+    </p>
+     <p>本人唯一优点</p>
+     <p id="shuai">帅</p>
+    </div>
+    <div id="second">
+    <p>本人爱好：无漫不欢</p>
+    <video autoplay loop controls height="400px">
+    <source src="video/02.mp4" type="video/mp4">
+    </video>
+     </div>
+    <footer>
+        <p>You just need to remember that I'm handsome</p>
+    </footer>
+    <aside>Copyright © 2019 Adobe Systems Incorporated. All rights reserved <a href="#">帮助</a> <a href="#">举报</a> <a href="#">反馈</a></aside>
+    </div>
+</body>
+<script>
+    // var name=prompt('请输入您的名字')
+    // alert('欢迎'+name+'来参观我的主页')
+</script>
+
+</html>
