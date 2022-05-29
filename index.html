@@ -1,89 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>我的主页</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>叵💖的💗叵</title>
 </head>
 <style>
-    *{
-        margin:0;
-        padding:0;
+    * {
+        margin: 0;
+        padding: 0;
     }
-    #all{
-      background-image:url(img/beijing.jpg);
-      background-size: cover;
-	  }
-      header  h1{color:rgba(255, 0, 0, 0.5);font-size:48px;margin-left: 20px;height:60px;}
-     header #daohang{width:350px;height:50px;margin:0 auto;margin-bottom: 20px;}
-     header #daohang a{
-          color:pink;
-          font-size: 28px;
-          text-decoration:none;
-          margin: 15px;
-          }
-          header #daohang a:hover{color: yellow;}
-      #first{
-		  height:140px;
-          margin:0 auto;
-      }
-      #first p{color: aqua;font-family: "楷体";font-size: 24px;text-align:center;}
-      #first #shuai{font-size:72px;color:gold;}
-        #second{
-          height: 500px;
-          margin:0 auto; 
-          color:palevioletred;
-          font-size:22px;
-		  text-align:center;
-          }
-          #second p{margin-top:20px;;}
-          #second video{margin-top:20px;;}
-      footer{
-          height: 260px;
-          margin:0 auto;
-          text-align: center;
-           }
-		   footer p{
-			   color:#3cf;
-               font-size:24px;
-		  }
-	 aside{height:30px;color:pink;}
-	 aside a{color:pink;}
-	 aside a:hover{color:yellow;}
-		  
+
+    #background {
+        background: url("img/bj.jpg");
+        background-size: cover;
+        opacity: 0.8;
+    }
+
+    #canvas {
+        position: absolute;
+        z-index: -101;
+    }
+
+
+    #tximg {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        ;
+        /*制作圆形的原理：将正方形的盒子，设置 border-radius属性值为50%*/
+        overflow: hidden;
+        ;
+        /*设置超出部分，隐藏*/
+        margin-left: 40px;
+    }
+
+    #tximg img {
+        width: 100px;
+        height: 100px;
+    }
 </style>
+
+
 <body>
-    <div id="all">
-    <header>
-        <h1>My First Web</h1>
-     <nav id="daohang">
-     <a href="ME.html">ME</a>
-     <a href="动漫.html">动漫</a>
-     <a href="游戏.html">游戏</a>
-     <a href="生活.html">生活</a>
-     </nav>
-    </header>
-    <div id="first">
-    <p>
-        <strong>Hello ,</strong>我是张鹏北，屌丝一枚。欢迎来到我的主页。。。
-    </p>
-     <p>本人唯一优点</p>
-     <p id="shuai">帅</p>
+    <div id="background">
+        <canvas id="canvas"></canvas>
+
+        <!-- 圆形头像 -->
+        <div id="tximg">
+            <a href="https://space.bilibili.com/486893379?spm_id_from=333.1007.0.0">
+                <img src="img/tx.jpeg">
+            </a>
+        </div>
+        <!-- 昵称格式 -->
+        <div id="nc">
+            <a href="https://space.bilibili.com/486893379?spm_id_from=333.1007.0.0" style="text-decoration:none;">
+            <h1>叵💖的💗叵</h1>
+            </a>
+        </div>
     </div>
-    <div id="second">
-    <p>本人爱好：无漫不欢</p>
-    <video autoplay loop controls height="400px">
-    <source src="video/02.mp4" type="video/mp4">
-    </video>
-     </div>
-    <footer>
-        <p>You just need to remember that I'm handsome</p>
-    </footer>
-    <aside>Copyright © 2019 Adobe Systems Incorporated. All rights reserved <a href="#">帮助</a> <a href="#">举报</a> <a href="#">反馈</a></aside>
-    </div>
+
+
+
 </body>
 <script>
-    // var name=prompt('请输入您的名字')
-    // alert('欢迎'+name+'来参观我的主页')
+    // 设置div背景的宽高
+    background = document.getElementById("background")
+    background.style.width = innerWidth + 'px'
+    background.style.height = innerHeight + 'px'
+
+    // 获取canvas对象
+    var canvas = document.getElementById("canvas")
+    // 获取画笔
+    var ctx = canvas.getContext("2d")
+
+    // 设置canvas宽高
+    canvas.height = innerHeight
+    canvas.width = innerWidth
+
+    // 定义一个粒子数组
+    var particlesArray = []
+    // 定义页面内粒子的数量
+    var count = parseInt(canvas.width / 80 * canvas.height / 80)
+
+
+    // 定义粒子类
+    class Particle {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+            // x，y轴的移动速度  -0.5 -- 0.5
+            this.directionX = Math.random() - 0.5
+            this.directionY = Math.random() - 0.5
+        }
+
+        // 更新点的坐标
+        update() {
+            this.x += this.directionX
+            this.y += this.directionY
+        }
+
+        // 绘制粒子
+        draw() {
+            ctx.beginPath()
+            ctx.arc(this.x, this.y, 2, 0, Math.PI * 2)
+            ctx.closePath()
+            ctx.fillStyle = "white"
+            ctx.fill()
+        }
+    }
+
+    // 创建粒子
+    function createParticle() {
+        // 生成一个点的随机坐标
+        var x = Math.random() * innerWidth
+        var y = Math.random() * innerHeight
+
+        particlesArray.push(new Particle(x, y))
+    }
+
+    // 处理粒子
+    // 先更新坐标，再绘制出来
+    function handleParticle() {
+        for (var i = 0; i < particlesArray.length; i++) {
+            var particle = particlesArray[i]
+            particle.update()
+            particle.draw()
+            // 超出范围就将这个粒子删除
+            if (particle.x < 0 || particle.x > canvas.width || particle.y < 0 || particle.y > canvas.height) {
+                particlesArray.splice(i, 1)
+            }
+
+            // 绘制两个点之间的连线
+            for (var j = i + 1; j < particlesArray.length; j++) {
+                dx = particlesArray[j].x - particlesArray[i].x
+                dy = particlesArray[j].y - particlesArray[i].y
+                dist = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
+                if (dist < 100) {
+                    ctx.beginPath()
+                    ctx.strokeStyle = "rgba(255, 255, 255, " + (1 - dist / 100)
+                    ctx.moveTo(particlesArray[i].x, particlesArray[i].y)
+                    ctx.lineTo(particlesArray[j].x, particlesArray[j].y)
+                    ctx.closePath()
+                    ctx.lineWidth = 1
+                    ctx.stroke()
+                }
+            }
+        }
+    }
+
+    function draw() {
+        // 首先清空画布
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        // 如果粒子数量小于规定数量，就生成新的粒子
+        if (particlesArray.length < count) {
+            createParticle()
+        }
+
+        // 处理粒子
+        handleParticle()
+    }
+
+    // 设置定时器
+    setInterval(draw, 10)
+
 </script>
 
 </html>
