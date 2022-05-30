@@ -41,8 +41,10 @@
         width: 100px;
         height: 100px;
     }
-</style>
 
+
+</style>
+<link type="text/css" rel="stylesheet" href="css/player.css">
 
 <body>
     <div id="background">
@@ -50,9 +52,7 @@
 
         <!-- 圆形头像 -->
         <div id="tximg">
-            <a href="https://space.bilibili.com/486893379?spm_id_from=333.1007.0.0">
                 <img src="img/tx.jpeg">
-            </a>
         </div>
         <!-- 昵称格式 -->
         <div id="nc">
@@ -61,6 +61,71 @@
             </a>
         </div>
     </div>
+    
+<!-- 音乐播放器插件 -->
+    <div id="QPlayer">
+    <div id="pContent">
+        <div id="player">
+            <span class="cover"></span>
+            <div class="ctrl">
+                <div class="musicTag marquee">
+                    <strong>歌名</strong>
+                    <span> - </span>
+                    <span class="artist">歌手</span>
+                </div>
+                <div class="progress">
+                    <div class="timer left">0:00</div>
+                    <div class="contr">
+                        <div class="rewind icon"></div>
+                       <div class="playback icon"></div>
+                        <div class="fastforward icon"></div>
+                    </div>
+                    <div class="right">
+                        <div class="liebiao icon"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ssBtn">
+                <div class="adf"></div>
+        </div>
+    </div>
+    <ol id="playlist"></ol>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.marquee.min.js"></script>
+    <script>
+        var	playlist = [
+    {title:"通牒",artist:"张叶蕾",mp3:"http://m801.music.126.net/20220530140911/28ab8c1e1b85f921eeec1b3c2a10a97c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/13329015851/b177/13ee/216e/ffcd8e9f202cdb81749bf894a9cf8f59.mp3",cover:"http://p1.music.126.net/XuSp6B8r2iZSJL9GdMhRbw==/109951167119738290.jpg"},
+    ]
+      var isRotate = true;
+      var autoplay = false;
+    </script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script>
+    function bgChange(){
+        var lis= $('.lib');
+        for(var i=0; i<lis.length; i+=2)
+        lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+        
+    }
+    window.onload = bgChange;
+
+
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
