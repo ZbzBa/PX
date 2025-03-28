@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>叵💖的歌单</title>
+  <link rel="stylesheet" type="text/css" href="./css/APlayer.css">
+  <link rel="stylesheet" type="text/css" href="./main.css">
+  <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+  <link rel="apple-touch-icon" href="./img/favicon.ico">
+  <meta name="apple-mobile-web-app-title" content="音乐">
+  <link rel="bookmark" href="./img/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="./img/favicon.ico">
+  <meta name="description" content="个人歌单在线网站。">
+  <link rel="manifest" href="/manifest.json"> 
+  <meta name="theme-color" content="#000000">
+</head>
+<body>
+<div id="heoMusic-page">
+</div>
+<script>
+   var userId = "8668419170";
+   var userServer = "tencent";
+   var userType = "playlist";
+   var localMusic = [{
+       name: '为你',
+       artist: '叶凡&姬紫月',
+       url: '/music/为你-叶凡&姬紫月.mp3',
+       cover: '/music/为你-叶凡&姬紫月.jpg',
+       lrc: '/music/为你-叶凡&姬紫月.lrc'
+   },
+   {
+       name: '落',
+       artist: '唐伯虎',
+       url: '/music/落.mp3',
+       cover: '/music/落.png',
+       lrc: '/music/落.lrc'
+   }
+   ];
+   var remoteMusic = "./musiclist.json"
+</script>
+<script src="./js/APlayer.min.js"></script>
+<script async data-pjax src="./js/main.js"></script>
+</body>
+</html>
